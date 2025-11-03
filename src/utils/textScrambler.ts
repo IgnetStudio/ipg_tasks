@@ -5,7 +5,7 @@ const scrambleWord = (word: string): string => {
   // Zachowujemy pierwszą i ostatnią literę
   const first = word[0];
   const last = word[word.length - 1];
-  const middle = word.slice(1, -1).split('');
+  const middle = word.slice(1, -1).split("");
 
   // Mieszamy środkowe litery
   for (let i = middle.length - 1; i > 0; i--) {
@@ -13,7 +13,7 @@ const scrambleWord = (word: string): string => {
     [middle[i], middle[j]] = [middle[j], middle[i]];
   }
 
-  return first + middle.join('') + last;
+  return first + middle.join("") + last;
 };
 
 // Funkcja pomocnicza do sprawdzania, czy znak jest polską literą
@@ -29,32 +29,35 @@ const isWordCharacter = (char: string): boolean => {
 // Główna funkcja do przetwarzania tekstu
 export const scrambleText = (text: string): string => {
   // Dzielimy tekst na linie
-  return text.split('\n').map(line => {
-    let result = '';
-    let currentWord = '';
-    let i = 0;
+  return text
+    .split("\n")
+    .map((line) => {
+      let result = "";
+      let currentWord = "";
+      let i = 0;
 
-    while (i < line.length) {
-      const char = line[i];
+      while (i < line.length) {
+        const char = line[i];
 
-      if (isWordCharacter(char)) {
-        currentWord += char;
-      } else {
-        // Jeśli mamy zebrany wyraz, mieszamy go i dodajemy do wyniku
-        if (currentWord) {
-          result += scrambleWord(currentWord);
-          currentWord = '';
+        if (isWordCharacter(char)) {
+          currentWord += char;
+        } else {
+          // Jeśli mamy zebrany wyraz, mieszamy go i dodajemy do wyniku
+          if (currentWord) {
+            result += scrambleWord(currentWord);
+            currentWord = "";
+          }
+          result += char; // Dodajemy znak interpunkcyjny lub spację
         }
-        result += char; // Dodajemy znak interpunkcyjny lub spację
+        i++;
       }
-      i++;
-    }
 
-    // Obsługa ostatniego wyrazu w linii
-    if (currentWord) {
-      result += scrambleWord(currentWord);
-    }
+      // Obsługa ostatniego wyrazu w linii
+      if (currentWord) {
+        result += scrambleWord(currentWord);
+      }
 
-    return result;
-  }).join('\n');
+      return result;
+    })
+    .join("\n");
 };

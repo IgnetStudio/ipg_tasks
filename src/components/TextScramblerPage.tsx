@@ -1,10 +1,10 @@
-import { useState, useRef, type ChangeEvent } from 'react';
-import { motion } from 'framer-motion';
-import { scrambleText } from '../utils/textScrambler';
+import { useState, useRef, type ChangeEvent } from "react";
+import { motion } from "framer-motion";
+import { scrambleText } from "../utils/textScrambler";
 
 export function TextScramblerPage() {
-  const [inputText, setInputText] = useState('');
-  const [outputText, setOutputText] = useState('');
+  const [inputText, setInputText] = useState("");
+  const [outputText, setOutputText] = useState("");
   const [isProcessing, setIsProcessing] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -24,7 +24,7 @@ export function TextScramblerPage() {
     };
 
     reader.onerror = () => {
-      alert('Błąd podczas wczytywania pliku');
+      alert("Błąd podczas wczytywania pliku");
       setIsProcessing(false);
     };
 
@@ -39,11 +39,11 @@ export function TextScramblerPage() {
   };
 
   const downloadResult = () => {
-    const blob = new Blob([outputText], { type: 'text/plain;charset=utf-8' });
+    const blob = new Blob([outputText], { type: "text/plain;charset=utf-8" });
     const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
+    const a = document.createElement("a");
     a.href = url;
-    a.download = 'tekst-pomieszany.txt';
+    a.download = "tekst-pomieszany.txt";
     document.body.appendChild(a);
     a.click();
     document.body.removeChild(a);
@@ -59,7 +59,7 @@ export function TextScramblerPage() {
     >
       <h1>Mieszacz Liter</h1>
       <p>Wgraj plik tekstowy lub wpisz tekst bezpośrednio w pole poniżej.</p>
-      
+
       <div className="file-upload">
         <input
           type="file"

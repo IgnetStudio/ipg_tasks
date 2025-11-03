@@ -1,10 +1,10 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import "./index.css";
 
-import { Navigation } from './components/Navigation';
-import { PeselValidatorPage } from './components/PeselValidatorPage';
-import { TextScramblerPage } from './components/TextScramblerPage';
+import { Navigation } from "./components/Navigation";
+import { PeselValidatorPage } from "./components/PeselValidatorPage";
+import { TextScramblerPage } from "./components/TextScramblerPage";
 
 function HomePage() {
   return (

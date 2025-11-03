@@ -1,20 +1,23 @@
-import { useState } from 'react';
-import type { FormEvent } from 'react';
-import { motion } from 'framer-motion';
-import { validatePESEL } from '../utils/peselValidator';
+import { useState } from "react";
+import type { FormEvent } from "react";
+import { motion } from "framer-motion";
+import { validatePESEL } from "../utils/peselValidator";
 
 export function PeselValidatorPage() {
-  const [pesel, setPesel] = useState('');
-  const [validationResult, setValidationResult] = useState<{ isValid: boolean; message: string } | null>(null);
+  const [pesel, setPesel] = useState("");
+  const [validationResult, setValidationResult] = useState<{
+    isValid: boolean;
+    message: string;
+  } | null>(null);
   const [isValidating, setIsValidating] = useState(false);
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsValidating(true);
-    
+
     // Symulacja opóźnienia dla lepszego UX
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
+    await new Promise((resolve) => setTimeout(resolve, 500));
+
     const result = validatePESEL(pesel);
     setValidationResult(result);
     setIsValidating(false);
@@ -47,7 +50,7 @@ export function PeselValidatorPage() {
             type="submit"
             disabled={isValidating}
           >
-            {isValidating ? 'Sprawdzanie...' : 'Sprawdź'}
+            {isValidating ? "Sprawdzanie..." : "Sprawdź"}
           </motion.button>
         </div>
       </form>
@@ -55,7 +58,9 @@ export function PeselValidatorPage() {
         <motion.div
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
-          className={`validation-result ${validationResult.isValid ? 'valid' : 'invalid'}`}
+          className={`validation-result ${
+            validationResult.isValid ? "valid" : "invalid"
+          }`}
         >
           {validationResult.message}
         </motion.div>

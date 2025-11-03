@@ -1,10 +1,10 @@
-import { Link } from 'react-router-dom';
-import { motion } from 'framer-motion';
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 export function Navigation() {
   return (
     <nav className="navigation">
-      <motion.div 
+      <motion.div
         className="nav-links"
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}

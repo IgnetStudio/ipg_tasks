@@ -6,7 +6,10 @@ export interface ValidationResult {
 export const validatePESEL = (pesel: string): ValidationResult => {
   // Check if PESEL is exactly 11 digits
   if (!/^\d{11}$/.test(pesel)) {
-    return { isValid: false, message: "PESEL musi składać się z dokładnie 11 cyfr" };
+    return {
+      isValid: false,
+      message: "PESEL musi składać się z dokładnie 11 cyfr",
+    };
   }
 
   // Extract date components
@@ -26,21 +29,23 @@ export const validatePESEL = (pesel: string): ValidationResult => {
   else return { isValid: false, message: "Nieprawidłowy miesiąc" };
 
   const testDate = new Date(fullYear, monthBase - 1, day);
-  if (testDate.getFullYear() !== fullYear || 
-      testDate.getMonth() !== monthBase - 1 || 
-      testDate.getDate() !== day) {
+  if (
+    testDate.getFullYear() !== fullYear ||
+    testDate.getMonth() !== monthBase - 1 ||
+    testDate.getDate() !== day
+  ) {
     return { isValid: false, message: "Nieprawidłowa data" };
   }
 
   // Weight factors for PESEL validation
   const weights = [1, 3, 7, 9, 1, 3, 7, 9, 1, 3];
-  
+
   // Calculate checksum according to the official algorithm
   let sum = 0;
   for (let i = 0; i < 10; i++) {
     sum += weights[i] * parseInt(pesel.charAt(i));
   }
-  
+
   const checksum = (10 - (sum % 10)) % 10;
   const lastDigit = parseInt(pesel.charAt(10));
 
