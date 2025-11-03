@@ -5,6 +5,7 @@ import "./index.css";
 import { Navigation } from "./components/Navigation";
 import { PeselValidatorPage } from "./components/PeselValidatorPage";
 import { TextScramblerPage } from "./components/TextScramblerPage";
+import { UsersPage } from "./components/UsersPage";
 
 function HomePage() {
   return (
@@ -30,6 +31,7 @@ export function App() {
             <Route path="/" element={<HomePage />} />
             <Route path="/pesel" element={<PeselValidatorPage />} />
             <Route path="/scrambler" element={<TextScramblerPage />} />
+            <Route path="/users" element={<UsersPage />} />
           </Routes>
         </AnimatePresence>
       </div>

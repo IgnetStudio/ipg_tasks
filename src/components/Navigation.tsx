@@ -19,6 +19,9 @@ export function Navigation() {
         <Link to="/scrambler">
           <motion.span whileHover={{ scale: 1.1 }}>Mieszacz Tekstu</motion.span>
         </Link>
+        <Link to="/users">
+          <motion.span whileHover={{ scale: 1.1 }}>Użytkownicy</motion.span>
+        </Link>
       </motion.div>
     </nav>
   );
