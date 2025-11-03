@@ -41,6 +41,62 @@ body::before {
   position: relative;
   z-index: 1;
 }
+
+.input-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+}
+
+.pesel-input {
+  padding: 0.5rem 1rem;
+  font-size: 1.2rem;
+  border: 2px solid #fbf0df;
+  border-radius: 8px;
+  background: #1a1a1a;
+  color: #fbf0df;
+  width: 200px;
+}
+
+.pesel-input:focus {
+  outline: none;
+  border-color: #f3d5a3;
+}
+
+button {
+  background: #fbf0df;
+  color: #1a1a1a;
+  border: 0;
+  padding: 0.5rem 1.2rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: 0.1s;
+}
+
+button:hover {
+  background: #f3d5a3;
+  transform: translateY(-1px);
+}
+
+.validation-result {
+  padding: 1rem;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  margin-top: 1rem;
+}
+
+.validation-result.valid {
+  background: #4caf50;
+  color: white;
+}
+
+.validation-result.invalid {
+  background: #f44336;
+  color: white;
+}
 .logo-container {
   display: flex;
   justify-content: center;
