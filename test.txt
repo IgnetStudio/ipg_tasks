@@ -1,0 +1,8 @@
+Napisz program w React, który posiada obsługę formularza do
+wgrania pliku tekstowego, a następnie przestawi losowo szyk
+liter w każdym wierszu oprócz pierwszej i ostatniej litery
+wyrazu.
+
+Uwzględnij interpunkcję, wielkie/małe litery,
+2222786578 wielolinijkowe teksty, polskie znaki.
+

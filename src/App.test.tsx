@@ -1,5 +1,5 @@
 import { test, expect } from "bun:test";
-import { validatePESEL } from "./App";
+import { validatePESEL } from "./utils/peselValidator";
 
 test("validatePESEL validates correct PESEL number", () => {
   // This is a valid PESEL number (example from official documentation)
