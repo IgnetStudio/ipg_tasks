@@ -15,7 +15,7 @@ export function PeselValidatorPage() {
     e.preventDefault();
     setIsValidating(true);
 
-    // Symulacja opóźnienia dla lepszego UX
+    // Simulating delay for better UX
     await new Promise((resolve) => setTimeout(resolve, 500));
 
     const result = validatePESEL(pesel);

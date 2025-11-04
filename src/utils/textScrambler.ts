@@ -1,13 +1,13 @@
-// Funkcja do mieszania liter w pojedynczym wyrazie
+// Function for scrambling letters in a single word
 const scrambleWord = (word: string): string => {
   if (word.length <= 3) return word;
 
-  // Zachowujemy pierwszą i ostatnią literę
+  // Preserve the first and last letter
   const first = word[0];
   const last = word[word.length - 1];
   const middle = word.slice(1, -1).split("");
 
-  // Mieszamy środkowe litery
+  // Scramble middle letters
   for (let i = middle.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     [middle[i], middle[j]] = [middle[j], middle[i]];
@@ -16,19 +16,19 @@ const scrambleWord = (word: string): string => {
   return first + middle.join("") + last;
 };
 
-// Funkcja pomocnicza do sprawdzania, czy znak jest polską literą
+// Helper function to check if a character is a Polish letter
 const isPolishLetter = (char: string): boolean => {
   return /[ąćęłńóśźżĄĆĘŁŃÓŚŹŻ]/.test(char);
 };
 
-// Funkcja pomocnicza do sprawdzania, czy znak jest częścią wyrazu
+// Helper function to check if a character is part of a word
 const isWordCharacter = (char: string): boolean => {
   return /\p{L}/u.test(char) || isPolishLetter(char);
 };
 
-// Główna funkcja do przetwarzania tekstu
+// Main function for processing text
 export const scrambleText = (text: string): string => {
-  // Dzielimy tekst na linie
+  // Split text into lines
   return text
     .split("\n")
     .map((line) => {
@@ -42,17 +42,17 @@ export const scrambleText = (text: string): string => {
         if (isWordCharacter(char)) {
           currentWord += char;
         } else {
-          // Jeśli mamy zebrany wyraz, mieszamy go i dodajemy do wyniku
+          // If we have a collected word, scramble it and add to result
           if (currentWord) {
             result += scrambleWord(currentWord);
             currentWord = "";
           }
-          result += char; // Dodajemy znak interpunkcyjny lub spację
+          result += char; // Add punctuation mark or space
         }
         i++;
       }
 
-      // Obsługa ostatniego wyrazu w linii
+      // Handle the last word in the line
       if (currentWord) {
         result += scrambleWord(currentWord);
       }
