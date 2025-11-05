@@ -10,7 +10,7 @@ const scrambleWord = (word: string): string => {
   // Scramble middle letters
   for (let i = middle.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    [middle[i], middle[j]] = [middle[j], middle[i]];
+    [middle[i], middle[j]] = [middle[j]!, middle[i]!];
   }
 
   return first + middle.join("") + last;
@@ -37,7 +37,7 @@ export const scrambleText = (text: string): string => {
       let i = 0;
 
       while (i < line.length) {
-        const char = line[i];
+        const char = line[i] ?? "";
 
         if (isWordCharacter(char)) {
           currentWord += char;

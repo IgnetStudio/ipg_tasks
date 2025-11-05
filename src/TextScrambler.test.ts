@@ -10,8 +10,8 @@ test("scrambleText zachowuje pierwsze i ostatnie litery wyrazów", () => {
 
   words.forEach((word, index) => {
     if (word.length > 1) {
-      expect(scrambledWords[index][0]).toBe(word[0]);
-      expect(scrambledWords[index][scrambledWords[index].length - 1]).toBe(
+      expect(scrambledWords[index]?.[0]).toBe(word[0]);
+      expect(scrambledWords[index]?.[scrambledWords[index]?.length - 1]).toBe(
         word[word.length - 1]
       );
     }

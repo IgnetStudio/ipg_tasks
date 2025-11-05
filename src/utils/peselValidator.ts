@@ -43,7 +43,10 @@ export const validatePESEL = (pesel: string): ValidationResult => {
   // Calculate checksum according to the official algorithm
   let sum = 0;
   for (let i = 0; i < 10; i++) {
-    sum += weights[i] * parseInt(pesel.charAt(i));
+    const weight = weights[i] ?? 0;
+    const ch = pesel.charAt(i);
+    const digit = ch ? parseInt(ch, 10) : 0;
+    sum += weight * digit;
   }
 
   const checksum = (10 - (sum % 10)) % 10;
