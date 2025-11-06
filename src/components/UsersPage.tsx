@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
 import {
   fetchUsers,
   updateUser,
@@ -49,12 +48,7 @@ export function UsersPage() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="page users-page"
-    >
+    <div className="page users-page">
       <h1>Zarządzanie Użytkownikami</h1>
 
       <form onSubmit={handleSearch} className="search-form">
@@ -68,27 +62,16 @@ export function UsersPage() {
         <button type="submit">Szukaj</button>
       </form>
 
-      {error && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="error-message"
-        >
-          {error}
-        </motion.div>
-      )}
+      {error && <div className="error-message">{error}</div>}
 
       <div className="users-list">
         {loading ? (
           <div className="loading">Ładowanie użytkowników...</div>
         ) : (
-          <AnimatePresence mode="wait">
+          <div>
             {users.map((user) => (
-              <motion.div
+              <div
                 key={user.id}
-                initial={{ opacity: 0, x: -20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: 20 }}
                 className={`user-card ${
                   editingUser?.id === user.id ? "editing" : ""
                 }`}
@@ -119,9 +102,9 @@ export function UsersPage() {
                     </button>
                   </>
                 )}
-              </motion.div>
+              </div>
             ))}
-          </AnimatePresence>
+          </div>
         )}
       </div>
 
@@ -140,6 +123,6 @@ export function UsersPage() {
           Next
         </button>
       </div>
-    </motion.div>
+    </div>
   );
 }

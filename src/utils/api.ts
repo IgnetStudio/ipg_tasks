@@ -27,7 +27,7 @@ export const fetchUsers = async (
 ): Promise<User[]> => {
   const params = new URLSearchParams({
     page: page.toString(),
-    per_page: "10",
+    per_page: "12",
     // Sort by id to maintain consistent order
     sort: "id",
     order: "asc",

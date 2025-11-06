@@ -1,5 +1,4 @@
 import { useState, useRef, type ChangeEvent } from "react";
-import { motion } from "framer-motion";
 import { scrambleText } from "../utils/textScrambler";
 
 export function TextScramblerPage() {
@@ -51,12 +50,7 @@ export function TextScramblerPage() {
   };
 
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="page text-scrambler"
-    >
+    <div className="page text-scrambler">
       <h1>Mieszacz Liter</h1>
       <p>Wgraj plik tekstowy lub wpisz tekst bezpośrednio w pole poniżej.</p>
 
@@ -92,15 +86,10 @@ export function TextScramblerPage() {
       </div>
 
       {outputText && (
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={downloadResult}
-          className="download-button"
-        >
+        <button onClick={downloadResult} className="download-button">
           Pobierz wynik
-        </motion.button>
+        </button>
       )}
-    </motion.div>
+    </div>
   );
 }
