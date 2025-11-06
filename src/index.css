@@ -19,7 +19,7 @@ body::before {
   inset: 0;
   z-index: -1;
   opacity: 0.05;
-  /* background: url("./logo.svg"); */
+  background: url("./logo.svg");
   background-size: 256px;
   transform: rotate(-12deg) scale(1.35);
   animation: slide 30s linear infinite;
@@ -122,7 +122,7 @@ body::before {
   border-radius: 8px;
   background: #1a1a1a;
   color: #fbf0df;
-  width: 200px;
+  width: 250px;
   transition: all 0.3s ease;
 }
 
@@ -208,7 +208,7 @@ button:disabled {
 .text-areas {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 2rem;
+  gap: 4rem;
   margin: 2rem 0;
 }
 
@@ -296,9 +296,9 @@ textarea:disabled {
   width: 300px;
 }
 
-.users-list {
+.users-list > div {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
   margin: 2rem 0;
 }
