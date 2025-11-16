@@ -14,7 +14,7 @@ export interface UserUpdatePayload {
 }
 
 const API_TOKEN =
-  "318afc8b2bb5dd3474a9379c0efc5e59245dc4ca4dcd46f0d2dcb3ab59019ca4"; // Should be replaced with a real token from gorest.co.in
+  process.env.BUN_PUBLIC_API_TOKEN || import.meta.env.BUN_PUBLIC_API_TOKEN;
 const API_BASE_URL = "https://gorest.co.in/public/v2";
 
 // Cache for storing fetched users
